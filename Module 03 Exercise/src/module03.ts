@@ -14,3 +14,28 @@ let employee1: StaffMember = {
   },
 };
 console.log(employee1.displayFullName());
+
+interface IceCream {
+  flavor: string;
+  numberOfScoops: number;
+}
+
+const vanillaServing: IceCream = {
+  flavor: 'Vanilla',
+  numberOfScoops: 3,
+};
+
+const mintServing: IceCream = {
+  flavor: 'Mint',
+  numberOfScoops: 2,
+};
+
+function iceCreamOrder(flavorOrder: IceCream, scoops: number) {
+  if (scoops > flavorOrder.numberOfScoops) {
+    console.log(`${flavorOrder.flavor} has a maximum of ${flavorOrder.numberOfScoops}`);
+  } else {
+    console.log(`Your ${scoops} scoops of ${flavorOrder.flavor} ice cream cone is ready.`);
+  }
+}
+iceCreamOrder(vanillaServing, 4);
+iceCreamOrder(mintServing, 2);
