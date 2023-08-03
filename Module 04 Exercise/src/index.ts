@@ -15,20 +15,29 @@ console.log(addingNumbers(4, 4));
 let adding = (a: number, b: number): number => a + b;
 console.log(adding(12, 3));
 
-// exercise - correct these functions so that are type safe
-function displayAlert(message: string): void {
-  console.log('The message is ' + message);
-}
-displayAlert('complete.');
-
-function sum(input: number[]): number {
-  let total = 0;
-  for (let count = 0; count < input.length; count++) {
-    if (isNaN(input[count])) {
+// rest parameters
+function addOneOrMore(fNum: number, ...otherNumbers: number[]): number {
+  let total: number = fNum;
+  for (let index = 0; index < otherNumbers.length; index++) {
+    if (isNaN(otherNumbers[index])) {
       continue;
     }
-    total += Number(input[count]);
+    total += otherNumbers[index];
   }
   return total;
 }
-console.log(sum([3, 3, 5]));
+console.log(addOneOrMore(5));
+console.log(addOneOrMore(5, 2, 2, 2));
+
+// deconstruction object parameters
+interface MultiTransaction {
+  deposit: number;
+  debit: number;
+}
+function makeMultiTransaction({ deposit, debit }: MultiTransaction) {
+  let depositBalance: number = deposit - debit;
+  let transactionType: string = depositBalance >= 0 ? 'deposit' : 'debit';
+  console.log(`This transaction results in a $${depositBalance} ${transactionType} toward your account.`);
+}
+makeMultiTransaction({ deposit: 200, debit: 175 });
+makeMultiTransaction({ deposit: 20, debit: 75 });
