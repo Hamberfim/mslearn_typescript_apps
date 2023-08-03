@@ -13,3 +13,19 @@ console.log(addingNumbers(4, 4));
 // arrow functions (Lambda, fat arrow functions) are short hand syntax for anonymous functions
 let adding = (a, b) => a + b;
 console.log(adding(12, 3));
+// exercise - correct these functions so that are type safe
+function displayAlert(message) {
+    console.log('The message is ' + message);
+}
+displayAlert('complete.');
+function sum(input) {
+    let total = 0;
+    for (let count = 0; count < input.length; count++) {
+        if (isNaN(input[count])) {
+            continue;
+        }
+        total += Number(input[count]);
+    }
+    return total;
+}
+console.log(sum([3, 3, 5]));
