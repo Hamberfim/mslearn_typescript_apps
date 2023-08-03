@@ -34,3 +34,15 @@ function makeMultiTransaction({ deposit, debit }) {
 makeMultiTransaction({ deposit: 200, debit: 175 });
 makeMultiTransaction({ deposit: 20, debit: 75 });
 makeMultiTransaction({ deposit: 10, debit: 10 });
+let addition = (x, y) => x + y;
+let subtraction = (x, y) => x - y;
+let doCalculation = (operation) => {
+    if (operation === 'add') {
+        return addition;
+    }
+    else {
+        return subtraction;
+    }
+};
+console.log(doCalculation('add')(5, 7));
+console.log(doCalculation('subtract')(12, 4));

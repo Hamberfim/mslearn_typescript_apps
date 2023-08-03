@@ -42,3 +42,20 @@ function makeMultiTransaction({ deposit, debit }: MultiTransaction) {
 makeMultiTransaction({ deposit: 200, debit: 175 });
 makeMultiTransaction({ deposit: 20, debit: 75 });
 makeMultiTransaction({ deposit: 10, debit: 10 });
+
+// type calculate = (a: number, b: number) => number;
+interface Calculate {
+  (x: number, y: number): number;
+}
+
+let addition: Calculate = (x: number, y: number): number => x + y;
+let subtraction: Calculate = (x: number, y: number): number => x - y;
+let doCalculation = (operation: 'add' | 'subtract'): Calculate => {
+  if (operation === 'add') {
+    return addition;
+  } else {
+    return subtraction;
+  }
+};
+console.log(doCalculation('add')(5, 7));
+console.log(doCalculation('subtract')(12, 4));
