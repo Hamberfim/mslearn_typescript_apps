@@ -41,3 +41,4 @@ function makeMultiTransaction({ deposit, debit }: MultiTransaction) {
 }
 makeMultiTransaction({ deposit: 200, debit: 175 });
 makeMultiTransaction({ deposit: 20, debit: 75 });
+makeMultiTransaction({ deposit: 10, debit: 10 });
