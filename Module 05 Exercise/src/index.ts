@@ -1,15 +1,24 @@
 // classes members
 class Car {
-  // Properties
-  _make: string;
-  _color: string;
-  _doors: number;
+  // static property
+  private static numberOfCars: number = 0;
+  // Instance Properties
+  private _make: string;
+  private _color: string;
+  private _doors: number;
 
   // Constructor
   constructor(make: string, color: string, doors = 2) {
     this._make = make;
     this._color = color;
-    this._doors = doors;
+    // validate doors data
+    if (doors % 2 === 0) {
+      this._doors = doors;
+    } else {
+      throw new Error('Doors must be an even number!');
+    }
+    // you use the syntax: 'className.propertyName' instead of 'this.' when accessing the static property.
+    Car.numberOfCars++; // Increments the value of the static property
   }
 
   // Accessors
@@ -21,7 +30,7 @@ class Car {
   }
 
   get color() {
-    return this._color;
+    return `The color of the car is ${this._color}.`;
   }
   set color(color) {
     this._color = color;
@@ -55,13 +64,25 @@ class Car {
     return `A ${this._color} ${this._doors} door ${this.worker()}.`;
   }
 
-  worker(): string {
+  private worker(): string {
     return this._make;
+  }
+
+  public static getNumberOfCars(): string {
+    return `Number of cars instantiated from the Car class: ${Car.numberOfCars}`;
   }
 }
 
 // instantiate
 let myFiat = new Car('Fiat', 'Black', 4);
 console.log(myFiat.displayCarInfo());
-console.log();
-console.log();
+console.log(myFiat.color); // access the get color() accessor
+// console.log(myFiat._color); // access the raw data but it's private
+
+let myNissan = new Car('Nissan', 'Red', 4);
+console.log(myNissan.displayCarInfo());
+console.log(myNissan.accelerate(15));
+console.log(myNissan.brake());
+console.log(myNissan.turn('left'));
+
+console.log(Car.getNumberOfCars());
