@@ -61,7 +61,7 @@ class Car {
   }
 
   displayCarInfo(): string {
-    return `A ${this._color} ${this._doors} door ${this.worker()}.`;
+    return `A ${this._color}, ${this._doors} door ${this.worker()}.`;
   }
 
   private worker(): string {
@@ -79,7 +79,7 @@ console.log(myFiat.displayCarInfo());
 console.log(myFiat.color); // access the get color() accessor
 // console.log(myFiat._color); // access the raw data but it's private
 
-let myNissan = new Car('Nissan', 'Red', 4);
+let myNissan = new Car('Nissan', 'Red');
 console.log(myNissan.displayCarInfo());
 console.log(myNissan.accelerate(15));
 console.log(myNissan.brake());
