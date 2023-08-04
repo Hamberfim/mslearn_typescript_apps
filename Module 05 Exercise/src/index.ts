@@ -51,7 +51,17 @@ class Car {
     return `${this.worker()} is turning ${direction}.`;
   }
 
+  displayCarInfo(): string {
+    return `A ${this._color} ${this._doors} door ${this.worker()}.`;
+  }
+
   worker(): string {
     return this._make;
   }
 }
+
+// instantiate
+let myFiat = new Car('Fiat', 'Black', 4);
+console.log(myFiat.displayCarInfo());
+console.log();
+console.log();
