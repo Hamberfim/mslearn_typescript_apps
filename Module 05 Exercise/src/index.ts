@@ -1,5 +1,15 @@
-// classes members
-class Car {
+// Declare an interface to ensure class shape - Interfaces solely define how data is structured
+interface Vehicle {
+  make: string;
+  color: string;
+  doors: number;
+  accelerate(speed: number): string;
+  brake(): string;
+  turn(direction: 'left' | 'right'): string;
+}
+
+// classes members - classes are a template for objects and allow you to define implementation details like methods, fields, and properties
+class Car implements Vehicle {
   // static property
   private static numberOfCars: number = 0;
   // Instance Properties

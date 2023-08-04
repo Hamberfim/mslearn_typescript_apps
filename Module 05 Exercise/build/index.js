@@ -1,5 +1,5 @@
 "use strict";
-// classes members
+// classes members - classes are a template for objects and allow you to define implementation details like methods, fields, and properties
 class Car {
     // Constructor
     constructor(make, color, doors = 2) {
