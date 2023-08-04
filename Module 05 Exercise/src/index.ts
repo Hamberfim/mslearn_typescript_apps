@@ -53,7 +53,7 @@ class Car {
   }
 
   brake(): string {
-    return `${this.worker()} is braking.`;
+    return `${this.worker()} is braking using standard brakes.`;
   }
 
   turn(direction: 'left' | 'right'): string {
@@ -64,7 +64,7 @@ class Car {
     return `A ${this._color}, ${this._doors} door ${this.worker()}.`;
   }
 
-  private worker(): string {
+  protected worker(): string {
     return this._make;
   }
 
@@ -86,3 +86,38 @@ console.log(myNissan.brake());
 console.log(myNissan.turn('left'));
 
 console.log(Car.getNumberOfCars());
+
+// extend a class
+class ElectricCar extends Car {
+  // Properties unique to ElectricCar
+  private _range: number;
+
+  // Constructor
+  constructor(make: string, color: string, range: number, doors = 2) {
+    super(make, color, doors);
+    this._range = range;
+  }
+
+  // Accessors
+  get range() {
+    return this._range;
+  }
+  set range(range) {
+    this._range = range;
+  }
+
+  // Methods
+  // Overrides the brake method of the Car class
+  brake(): string {
+    return `${this.worker()} is braking using the regenerative braking system.`;
+  }
+
+  charge() {
+    console.log(this.worker() + ' is charging.');
+  }
+}
+
+let chevVolt = new ElectricCar('Chevy Volt', 'silver', 325, 2);
+console.log(chevVolt.displayCarInfo());
+console.log(chevVolt.accelerate(15));
+console.log(chevVolt.brake());

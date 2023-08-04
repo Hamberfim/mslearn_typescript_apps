@@ -44,7 +44,7 @@ class Car {
         return `${this.worker()} is accelerating to ${speed} MPH.`;
     }
     brake() {
-        return `${this.worker()} is braking.`;
+        return `${this.worker()} is braking using standard brakes.`;
     }
     turn(direction) {
         return `${this.worker()} is turning ${direction}.`;
@@ -72,3 +72,30 @@ console.log(myNissan.accelerate(15));
 console.log(myNissan.brake());
 console.log(myNissan.turn('left'));
 console.log(Car.getNumberOfCars());
+// extend a class
+class ElectricCar extends Car {
+    // Constructor
+    constructor(make, color, range, doors = 2) {
+        super(make, color, doors);
+        this._range = range;
+    }
+    // Accessors
+    get range() {
+        return this._range;
+    }
+    set range(range) {
+        this._range = range;
+    }
+    // Methods
+    // Overrides the brake method of the Car class
+    brake() {
+        return `${this.worker()} is braking using the regenerative braking system.`;
+    }
+    charge() {
+        console.log(this.worker() + ' is charging.');
+    }
+}
+let chevVolt = new ElectricCar('Chevy Volt', 'silver', 325, 2);
+console.log(chevVolt.displayCarInfo());
+console.log(chevVolt.accelerate(15));
+console.log(chevVolt.brake());
