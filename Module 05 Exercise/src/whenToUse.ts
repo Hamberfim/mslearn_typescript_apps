@@ -20,9 +20,9 @@ class DogRecord implements Dog {
     this.description = description;
   }
 
-  static loadDog(id: number): DogRecord {
+  static loadDog(id: number): number {
     // code to load dog from database
-    return dog;
+    return id;
   }
 
   save() {

@@ -9,7 +9,7 @@ class DogRecord {
     }
     static loadDog(id) {
         // code to load dog from database
-        return dog;
+        return id;
     }
     save() {
         // code to save dog to database
