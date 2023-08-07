@@ -48,3 +48,50 @@ function identity2<T extends ValidTypes, U>(value: T, message: U) {
 
 console.log(identity2<number, string>(2, 'pop'));
 console.log(identity2<string, string>('one', 'pop'));
+
+// generic interface
+interface Identity3<T, U> {
+  value: T;
+  message: U;
+}
+let returnNumber: Identity3<number, string> = {
+  value: 25,
+  message: 'Hello!',
+};
+let returnString: Identity3<string, number> = {
+  value: 'Hello!',
+  message: 25,
+};
+
+// generic interface as a function type - generic method signature
+interface ProcessIdentity<T, U> {
+  (value: T, message: U): T;
+}
+function processIdentity<T, U>(value: T, message: U): T {
+  console.log(message);
+  return value;
+}
+let processor: ProcessIdentity<number, string> = processIdentity;
+let returnNumber1 = processor(100, 'Hello!');
+
+// generic interface as a class type
+interface ProcessIdentity2<T, U> {
+  value: T;
+  message: U;
+  process(): T;
+}
+class processIdentity2<X, Y> implements ProcessIdentity2<X, Y> {
+  value: X;
+  message: Y;
+  constructor(val: X, msg: Y) {
+    this.value = val;
+    this.message = msg;
+  }
+  process(): X {
+    console.log(this.message);
+    return this.value;
+  }
+}
+let processor2 = new processIdentity2<number, string>(100, 'Hello');
+processor2.process(); // Displays 'Hello'
+// processor2.value = '100';       // Type check error
