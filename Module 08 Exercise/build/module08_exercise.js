@@ -44,3 +44,6 @@ var AllGreetings;
 })(AllGreetings || (AllGreetings = {}));
 AllGreetings.Greetings.returnGreeting('Bonjour'); // OK
 AllGreetings.GreetingsWithLength.returnGreeting('Hola'); // OK
+// namespaces alias
+var greet = AllGreetings.Greetings;
+greet.returnGreeting('Bonjour');

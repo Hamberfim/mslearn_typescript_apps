@@ -42,3 +42,7 @@ namespace AllGreetings {
 }
 AllGreetings.Greetings.returnGreeting('Bonjour'); // OK
 AllGreetings.GreetingsWithLength.returnGreeting('Hola'); // OK
+
+// namespaces alias
+import greet = AllGreetings.Greetings;
+greet.returnGreeting('Bonjour');
