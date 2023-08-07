@@ -95,3 +95,19 @@ class processIdentity2<X, Y> implements ProcessIdentity2<X, Y> {
 let processor2 = new processIdentity2<number, string>(100, 'Hello');
 processor2.process(); // Displays 'Hello'
 // processor2.value = '100';       // Type check error
+
+// generic class
+class processIdentity3<T, U> {
+  private _value: T;
+  private _message: U;
+  constructor(value: T, message: U) {
+    this._value = value;
+    this._message = message;
+  }
+  getIdentity(): T {
+    console.log(this._message);
+    return this._value;
+  }
+}
+let processor3 = new processIdentity3<number, string>(100, 'Hello');
+processor3.getIdentity(); // Displays 'Hello'

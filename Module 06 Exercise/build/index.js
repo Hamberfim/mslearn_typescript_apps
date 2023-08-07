@@ -67,3 +67,16 @@ class processIdentity2 {
 let processor2 = new processIdentity2(100, 'Hello');
 processor2.process(); // Displays 'Hello'
 // processor2.value = '100';       // Type check error
+// generic class
+class processIdentity3 {
+    constructor(value, message) {
+        this._value = value;
+        this._message = message;
+    }
+    getIdentity() {
+        console.log(this._message);
+        return this._value;
+    }
+}
+let processor3 = new processIdentity3(100, 'Hello');
+processor3.getIdentity(); // Displays 'Hello'
