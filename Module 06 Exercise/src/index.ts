@@ -24,14 +24,6 @@ let returnBool = identity<boolean, string>(true, 'isTrue');
 console.log(returnBool);
 
 // generic constraints
-type ValidTypes = number | string;
-function keyIdentity<T extends ValidTypes, U>(value: T, message: U): Object {
-  return { value, message };
-}
-
-console.log(keyIdentity<number, string>(1, 'pop'));
-console.log(keyIdentity('one', 'pop'));
-
 function getPets<T, K extends keyof T>(pet: T, key: K) {
   return pet[key];
 }
@@ -41,3 +33,18 @@ let pets2 = { 0: 'cats', 1: 'dogs', 2: 'parrots', 3: 'fish' };
 
 console.log(getPets(pets1, 'fish')); // Returns 0
 console.log(getPets(pets2, 2)); // Returns 'parrots'
+
+type ValidTypes = number | string;
+function identity2<T extends ValidTypes, U>(value: T, message: U) {
+  let result: ValidTypes = '';
+  let typeValue: string = typeof value;
+  if (typeof value === 'number') {
+    result = value + value;
+  } else if (typeof value === 'string') {
+    result = value + '-' + value;
+  }
+  return result;
+}
+
+console.log(identity2<number, string>(2, 'pop'));
+console.log(identity2<string, string>('one', 'pop'));
