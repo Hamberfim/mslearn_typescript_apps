@@ -1,12 +1,13 @@
-/*  TODO Create LoanPrograms namespace. */
+/// <reference path="module08_loans.ts" />
+
 namespace LoanPrograms {
-  /*  TODO Update the calculateInterestOnlyLoanPayment function. */
+  // Calculates the monthly payment of an interest only loan
   export function calculateInterestOnlyLoanPayment(loanTerms: Loans.Loan): string {
     let payment: number;
     payment = loanTerms.principle * calculateInterestRate(loanTerms.interestRate);
     return 'The interest only loan payment is ' + payment.toFixed(2);
   }
-  /*  TODO Update the calculateConventionalLoanPayment function. */
+  // Calculates the monthly payment of a conventional loan
   export function calculateConventionalLoanPayment(loanTerms: Loans.ConventionalLoan): string {
     let interest: number = calculateInterestRate(loanTerms.interestRate);
     let payment: number;

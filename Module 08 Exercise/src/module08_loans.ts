@@ -1,4 +1,3 @@
-/*  TODO Create a the Loans namespace. */
 namespace Loans {
   export interface Loan {
     principle: number;

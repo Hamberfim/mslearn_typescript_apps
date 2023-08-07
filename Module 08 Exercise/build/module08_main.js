@@ -1,8 +1,6 @@
 "use strict";
-/*  Module 8: Organize code using TypeScript namespaces
-    Lab Start */
-/*  TODO Add reference paths. */
-/*  TODO Update the function calls. */
+/// <reference path="module08_loans.ts" />
+/// <reference path="module08_loan-programs.ts" />
 let interestOnlyPayment = LoanPrograms.calculateInterestOnlyLoanPayment({ principle: 30000, interestRate: 5 });
 let conventionalLoanPayment = LoanPrograms.calculateConventionalLoanPayment({
     principle: 30000,
